@@ -1,11 +1,13 @@
-FROM gcc:13
+FROM ubuntu:22.04
 
 WORKDIR /app
 
-COPY server.cpp .
+# Copy your precompiled binary (make sure it's executable)
+COPY server .
 
-RUN g++ server.cpp -o server
+# Give executable permission (just in case)
+RUN chmod +x server
 
-EXPOSE 3001
+EXPOSE 9909
 
 CMD ["./server"]
